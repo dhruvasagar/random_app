@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  randomapp
+  labels:
+    name:  randomapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: randomapp
+  template:
+    metadata:
+      labels:
+        name:  randomapp
+    spec:
+      containers:
+      - image:  quay.io/dhruvasagar/randomapp:latest
+        name: randomapp
+        ports:
+        - containerPort:  3000
+        imagePullPolicy: Always
