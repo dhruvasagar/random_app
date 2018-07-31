@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  name: randomapp
+spec:
+  rules:
+  - host: randomapp.dev.klstr.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: randomapp
+          servicePort: 8080
